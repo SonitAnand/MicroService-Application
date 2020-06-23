@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,5 +64,15 @@ public class ItemCatalogController {
         List<Item> itemList= new ArrayList<>();
         itemList.add(itemFuture.get());
         return itemList;
+    }
+
+    @Autowired
+    private KafkaTemplate<String,Item> kafkaTemplate;
+    private static String topic = "Kafka_Example";
+
+    @GetMapping(value = "/publish/{name}")
+    public String post(@PathVariable("name") final String name){
+        kafkaTemplate.send(topic,new Item("101",name,"20099"));
+        return "Publish Successfully";
     }
 }

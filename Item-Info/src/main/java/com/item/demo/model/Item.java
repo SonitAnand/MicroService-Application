@@ -8,13 +8,9 @@ import java.io.Serializable;
 
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
-@Getter
-@Setter
 @Data
-@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
 public class Item implements Serializable {
 
     @Id

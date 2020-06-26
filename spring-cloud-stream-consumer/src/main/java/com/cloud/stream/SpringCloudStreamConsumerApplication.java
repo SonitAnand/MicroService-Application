@@ -13,7 +13,7 @@ import org.springframework.cloud.stream.messaging.Sink;
 @EnableBinding(Sink.class)
 public class SpringCloudStreamConsumerApplication {
 
-	private Logger logger = LoggerFactory.getLogger(SpringCloudStreamConsumerApplication.class);
+	private final Logger logger = LoggerFactory.getLogger(SpringCloudStreamConsumerApplication.class);
 
 	@StreamListener("input")
 	public void consumeMessage(Book book){

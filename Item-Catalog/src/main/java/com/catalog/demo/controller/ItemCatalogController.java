@@ -51,7 +51,7 @@ public class ItemCatalogController {
 
         CommonHystrixCommand<Item> itemCommonHystrixCommand = new CommonHystrixCommand<Item>("default",() ->
             {
-                return restTemplate.getForObject(getBaseURL()+"89/items/"+itemId,Item.class);
+                return restTemplate.getForObject(getBaseURL()+"/items/"+itemId,Item.class);
             },() -> {
             return  new Item();
         });

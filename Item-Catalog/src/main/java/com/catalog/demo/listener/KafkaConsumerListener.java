@@ -12,8 +12,8 @@ public class KafkaConsumerListener {
         System.out.println("Consumed messages : " + message);
     }
 
-    /*@KafkaListener(topics = "Kafka_Example_Json" ,groupId = "group_json",containerFactory = "itemkafkaListenerContainerFactory")
+    @KafkaListener(topics = "Kafka_Example_Json" ,groupId = "group_json",containerFactory = "itemkafkaListenerContainerFactory")
     public void consumeJson(Item item) {
         System.out.println("Consumed JSON messages : " + item);
-    }*/
+    }
 }

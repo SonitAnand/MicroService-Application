@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.*;
-import org.springframework.kafka.support.serializer.ErrorHandlingDeserializer;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 import org.springframework.kafka.support.serializer.JsonSerializer;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,7 +39,7 @@ public class KafkaConfiguration {
         return new DefaultKafkaConsumerFactory<>(config);
     }
 
-    /*@Bean
+    @Bean
     public ConsumerFactory<String,Item> itemConsumerFactory(){
         Map<String, Object> config = new HashMap<>();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,"127.0.0.1:9092");
@@ -47,7 +47,7 @@ public class KafkaConfiguration {
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(),new JsonDeserializer<>(Item.class));
-    }*/
+    }
 
     @Bean
     public KafkaTemplate<String, Item> kafkaTemplate(){
@@ -61,10 +61,10 @@ public class KafkaConfiguration {
         return concurrentKafkaListenerContainerFactory;
     }
 
-    /*@Bean
+    @Bean
     public ConcurrentKafkaListenerContainerFactory<String,Item> itemkafkaListenerContainerFactory(){
         ConcurrentKafkaListenerContainerFactory<String,Item> concurrentKafkaListenerContainerFactory = new ConcurrentKafkaListenerContainerFactory<>();
         concurrentKafkaListenerContainerFactory.setConsumerFactory(itemConsumerFactory());
         return concurrentKafkaListenerContainerFactory;
-    }*/
+    }
 }
